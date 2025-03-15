@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Timer</title>
+  <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+
+  <nav>
+    <img src="logo.png">
+
+  </nav>
+
+  <div class = "main-container">
+
+    <div id = "mode-selector">
+
+      <button>공부</button>
+      <button>짧은 휴식</button>
+      <button>긴 휴식</button>
+    </div>
+
+    <div class="timer-container">
+
+      <svg >
+        <!-- 배경 원 -->
+        <circle class="circle-bg" cx="200" cy="200" r="180" />
+        <!-- 진행 원 -->
+        <circle class="circle-progress" cx="200" cy="200" r="180" stroke-opacity="0.85"/>
+      </svg>
+  
+      <div class="time-display">05:00</div> <!-- 남은 시간 표시 -->
+    </div>
+
+
+    <div id = "buttons">
+      <button id = "start-pause" onclick="start_or_pause()">시작하기</button>
+      <div id = "restart"> restart</div>
+
+      <div>
+        <label for="lang">Background</label>
+        <select name="languages" id="lang">
+        <option value="javascript">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="java">Java</option>
+        <option value="golang">Golang</option>
+        <option value="python">Python</option>
+        <option value="c#">C#</option>
+        <option value="C++">C++</option>
+        <option value="erlang">Erlang</option>
+      </select>
+      </div>
+      
+
+    </div>
+
+
+  </div>
+
+
+  <script src = "timer.js" defer></script>
+</body>
+</html>

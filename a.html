@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Timer</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .timer-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .timer-container svg {
+      transform: rotate(-90deg); /* 위쪽부터 시작하도록 회전 */
+    }
+
+    .circle-bg {
+      fill: none;
+      stroke: #e6e6e6; /* 배경 원 색상 */
+      stroke-width: 15;
+    }
+
+    .circle-progress {
+      fill: none;
+      stroke: #00aaff; /* 진행 바 색상 */
+      stroke-width: 15;
+      stroke-linecap: round; /* 끝을 둥글게 */
+      stroke-dasharray: 628; /* 원주 길이 */
+      stroke-dashoffset: 628; /* 시작점 (전부 감춰짐) */
+      transition: stroke-dashoffset 0.5s linear; /* 애니메이션 효과 */
+    }
+
+    .time-display {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer-container">
+    <svg width="200" height="200">
+      <!-- 배경 원 -->
+      <circle class="circle-bg" cx="100" cy="100" r="100" />
+      <!-- 진행 원 -->
+      <circle class="circle-progress" cx="100" cy="100" r="100" />
+    </svg>
+    <div class="time-display">10:00</div> <!-- 남은 시간 표시 -->
+  </div>
+
+  <script>
+    // 타이머 설정
+    const duration = 60; // 총 시간 (초 단위)
+    const circle = document.querySelector('.circle-progress');
+    const timeDisplay = document.querySelector('.time-display');
+
+    const radius = circle.r.baseVal.value; // 원의 반지름
+    const circumference = 2 * Math.PI * radius; // 원의 둘레
+
+    circle.style.strokeDasharray = circumference;
+    circle.style.strokeDashoffset = circumference;
+
+    let remainingTime = duration; // 남은 시간
+
+    function updateTimer() {
+      const minutes = Math.floor(remainingTime / 60);
+      const seconds = remainingTime % 60;
+      timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      const progress = remainingTime / duration; // 남은 시간 비율
+      circle.style.strokeDashoffset = circumference *progress; // 비율에 따라 테두리 업데이트
+
+      if (remainingTime > 0) {
+        remainingTime = remainingTime-0.25;
+      } else {
+        clearInterval(timer); // 타이머 종료
+        alert("Time's up!");
+      }
+    }
+
+    // 1초마다 타이머 업데이트
+    const timer = setInterval(updateTimer, 250);
+    updateTimer(); // 초기 상태 업데이트
+  </script>
+</body>
+</html>
+

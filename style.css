@@ -1,0 +1,168 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+
+body {
+
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url("background1.jpg");
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+
+
+nav {
+    background: transparent;
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width : 98%
+}
+
+nav img{
+    size : 50%;
+}
+
+
+
+.main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width : 100vw;
+    height: calc(75vh - 80px); /* Navigation 높이 제외 */  
+    top : 0%;
+    padding: 0vh;
+    margin: 0%;
+
+  }
+
+.timer-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+
+}
+
+.timer-container svg {
+    transform: rotate(-90deg); /* 위쪽부터 시작하도록 회전 */
+    width:400px;
+    height:400px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: gray; /* 배경 원 색상 */
+    stroke-width: 30;
+    stroke-opacity: 0.25;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: rgb(240, 237, 237); /* 진행 바 색상 */
+    stroke-width: 30;
+    stroke-linecap :square;
+    stroke-dasharray: 628; /* 원주 길이 */
+    stroke-dashoffset: 800; /* 시작점 (전부 감춰짐) */
+    transition: stroke-dashoffset 1s linear; /* 애니메이션 효과 */
+}
+
+.time-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6.5em;
+    font-weight: bold;
+    color: rgb(237, 241, 244);
+
+}
+
+
+  
+@media (max-width: 1400px) {   /*400보다 작으면 이것을 적용한다*/
+  
+
+    .timer-container svg {
+        transform: rotate(-90deg); /* 위쪽부터 시작하도록 회전 */
+        width: 300px;
+        height: 300px;
+    }
+
+}
+
+
+@media (max-width: 1400px) {   /*400보다 작으면 이것을 적용한다*/
+  
+
+    .circle-bg {
+        cx : 150; 
+        cy : 150; 
+        r : 135;
+        stroke-width: 22;
+    }
+
+}
+
+
+@media (max-width: 1400px) {   /*400보다 작으면 이것을 적용한다*/
+  
+
+    .circle-progress {
+        cx : 150; 
+        cy : 150; 
+        r : 135;
+        stroke-width: 22;
+    }
+
+}
+
+
+@media (max-width: 1400px) {   /*400보다 작으면 이것을 적용한다*/
+  
+
+    .timer-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    
+    }
+
+    .time-display{
+        font-size: 5em;
+    }
+
+}
+
+
+#mode-selector{
+    display: flex;
+    position: relative;
+    top : -5%
+}
+
+#buttons{
+    display: flex;
+    position: relative;
+    bottom : -5%;
+    width : 400px;
+    justify-content: space-between;
+
+}
+
+   
+    
+   
+
+
+    
+
